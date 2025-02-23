@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const Favorites: React.FC = () => {
   interface FavoriteItem {
@@ -11,12 +11,11 @@ const Favorites: React.FC = () => {
     setFavorites([...favorites, item]);
   };
 
-  // Example usage of addToFavorites to avoid unused variable error
-  React.useEffect(() => {
+  useEffect(() => {
     addToFavorites({ title: "Example Item" });
-  }, []);
+  }, [addToFavorites]);
 
-  const removeFromFavorites = (item: any) => {
+  const removeFromFavorites = (item: FavoriteItem) => {
     setFavorites(favorites.filter((fav) => fav !== item));
   };
 
