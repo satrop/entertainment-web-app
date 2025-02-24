@@ -17,7 +17,6 @@ interface TMDBItem {
   backdrop_path: string; // Add backdrop_path property
   release_date?: string; // Add optional release_date property
   first_air_date?: string; // Add optional first_air_date property
-  // Define the structure of your TMDB item here
   [key: string]: unknown; // Use 'unknown' to allow any value
 }
 
