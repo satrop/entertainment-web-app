@@ -2,7 +2,7 @@
 
 import React from "react";
 import Nav from "../../components/Nav";
-import Favorites from "../../components/Favorites";
+import Favorites from "../../components/Favorites/Favorites";
 import "../../styles/globals.scss";
 
 const FavoritesPage: React.FC = () => {

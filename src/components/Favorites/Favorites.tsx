@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import "./Favorites.scss";
 
 const Favorites: React.FC = () => {
   interface FavoriteItem {
@@ -7,13 +8,13 @@ const Favorites: React.FC = () => {
 
   const [favorites, setFavorites] = useState<FavoriteItem[]>([]);
 
-  const addToFavorites = (item: FavoriteItem) => {
-    setFavorites((prevFavorites) => [...prevFavorites, item]);
-  };
+  // const addToFavorites = (item: FavoriteItem) => {
+  //   setFavorites((prevFavorites) => [...prevFavorites, item]);
+  // };
 
-  useEffect(() => {
-    addToFavorites({ title: "Example Item" });
-  }, []); // ✅ Empty dependency array ensures this only runs once
+  // useEffect(() => {
+  //   addToFavorites({ title: "Example Item" });
+  // }, [addToFavorites]); // ✅ Add addToFavorites to the dependency array
 
   const removeFromFavorites = (item: FavoriteItem) => {
     setFavorites((prevFavorites) => prevFavorites.filter((fav) => fav !== item));

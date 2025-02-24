@@ -1,6 +1,6 @@
 import React from "react";
 import Nav from "../../components/Nav";
-import Movies from "../../components/Movies";
+import Movies from "../../components/Movies/Movies";
 import "../../styles/globals.scss";
 
 /**

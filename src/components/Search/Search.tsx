@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import axios from "axios";
+import "./Search.scss";
 
 const Search: React.FC = () => {
   const [query, setQuery] = useState("");
@@ -15,7 +16,7 @@ const Search: React.FC = () => {
           query: query,
         },
       });
-      const data = response.data.results.map((item: any) => ({
+      const data = response.data.results.map((item: { title?: string; name?: string }) => ({
         title: item.title || item.name,
       }));
       setResults(data);
