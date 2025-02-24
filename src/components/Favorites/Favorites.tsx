@@ -17,7 +17,9 @@ const Favorites: React.FC = () => {
   // }, [addToFavorites]); // ✅ Add addToFavorites to the dependency array
 
   const removeFromFavorites = (item: FavoriteItem) => {
-    setFavorites((prevFavorites) => prevFavorites.filter((fav) => fav !== item));
+    setFavorites((prevFavorites) =>
+      prevFavorites.filter((fav) => fav !== item),
+    );
   };
 
   return (

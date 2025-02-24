@@ -8,7 +8,12 @@ import "./Movies.scss";
 
 const Movies: React.FC = () => {
   const { data: movies, baseUrl } = useFetchTMDBData("movie/popular", 20);
-  const [certifications, setCertifications] = useState<{ [key: string]: string }>({});
+  const [certifications, setCertifications] = useState<{
+    [key: string]: string;
+  }>({});
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const clearSearch = () => setSearchQuery("");
 
   useEffect(() => {
     const fetchCertifications = async () => {
@@ -24,16 +29,36 @@ const Movies: React.FC = () => {
     }
   }, [movies]);
 
+  const filteredMovies = movies.filter((item) =>
+    item.title?.toLowerCase().includes(searchQuery.toLowerCase()),
+  );
+
   return (
     <section id="movies">
       <h2>Popular Movies</h2>
+      <input
+        type="text"
+        placeholder="Search Movies"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+      />
+      {searchQuery && <button onClick={clearSearch}>Clear</button>}
       <div id="movies-list">
-        {movies.map((item) => (
+        {filteredMovies.map((item) => (
           <div key={item.id} className="movie-item">
-            <Image src={`${baseUrl}w300${item.backdrop_path}`} alt={`${item.title} still`} width={280} height={174} />
+            <Image
+              src={`${baseUrl}w300${item.backdrop_path}`}
+              alt={`${item.title} still`}
+              width={280}
+              height={174}
+            />
             <div className="movie-title">{item.title}</div>
-            <div className="movie-year">{(item.release_date || "").split("-")[0]}</div>
-            <div className="movie-rating">Rating: {certifications[item.id] || "Loading..."}</div>
+            <div className="movie-year">
+              {(item.release_date || "").split("-")[0]}
+            </div>
+            <div className="movie-rating">
+              Rating: {certifications[item.id] || "Loading..."}
+            </div>
             <div className="movie-type">Type: Movie</div>
           </div>
         ))}
