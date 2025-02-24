@@ -1,6 +1,7 @@
 import React from "react";
 import Nav from "../../components/Nav";
 import "../../styles/globals.scss";
+import TopTVShows from "../../components/TopTVShows";
 
 const TVShows: React.FC = () => {
   return (
@@ -8,7 +9,7 @@ const TVShows: React.FC = () => {
       <Nav />
       <main>
         <h2>TV Shows</h2>
-        {/* Add TV Shows content here */}
+        <TopTVShows />
       </main>
     </div>
   );

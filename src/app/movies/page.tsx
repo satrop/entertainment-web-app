@@ -1,17 +1,21 @@
 import React from "react";
 import Nav from "../../components/Nav";
+import Movies from "../../components/Movies";
 import "../../styles/globals.scss";
 
-const Movies: React.FC = () => {
+/**
+ * MoviesPage component renders the Movies component.
+ */
+const MoviesPage: React.FC = () => {
   return (
     <div>
       <Nav />
       <main>
         <h2>Movies</h2>
-        {/* Add Movies content here */}
+        <Movies />
       </main>
     </div>
   );
 };
 
-export default Movies;
+export default MoviesPage;

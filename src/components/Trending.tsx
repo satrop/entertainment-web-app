@@ -1,21 +1,13 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { MediaItem } from "../types/MediaItem";
 
 /**
  * Trending component fetches and displays the top 5 trending movies and TV shows.
  */
 const Trending: React.FC = () => {
-  const [trending, setTrending] = useState<
-    {
-      id: number;
-      title: string;
-      still: string;
-      year: string;
-      rating: string;
-      type: string;
-    }[]
-  >([]);
+  const [trending, setTrending] = useState<MediaItem[]>([]);
   const [baseUrl, setBaseUrl] = useState<string>("");
 
   useEffect(() => {

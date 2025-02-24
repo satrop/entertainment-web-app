@@ -8,15 +8,15 @@ const Favorites: React.FC = () => {
   const [favorites, setFavorites] = useState<FavoriteItem[]>([]);
 
   const addToFavorites = (item: FavoriteItem) => {
-    setFavorites([...favorites, item]);
+    setFavorites((prevFavorites) => [...prevFavorites, item]);
   };
 
   useEffect(() => {
     addToFavorites({ title: "Example Item" });
-  }, [addToFavorites]);
+  }, []); // ✅ Empty dependency array ensures this only runs once
 
   const removeFromFavorites = (item: FavoriteItem) => {
-    setFavorites(favorites.filter((fav) => fav !== item));
+    setFavorites((prevFavorites) => prevFavorites.filter((fav) => fav !== item));
   };
 
   return (

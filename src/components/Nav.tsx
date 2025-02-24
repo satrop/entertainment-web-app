@@ -16,7 +16,7 @@ const Nav: React.FC = () => {
             <Link href="/favorites">Favorites</Link>
           </li>
           <li>
-            <Link href="/">All</Link>
+            <Link href="/">Home</Link>
           </li>
         </ul>
       </nav>
