@@ -1,16 +1,27 @@
 "use client";
 
 import React, { useState } from "react";
+import axios from "axios";
 
 const Search: React.FC = () => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<{ title: string }[]>([]);
 
   const handleSearch = async () => {
-    // Placeholder for searching movies or TV shows
-    // Replace with actual API call
-    const data = [{ title: "Search Result 1" }, { title: "Search Result 2" }, { title: "Search Result 3" }];
-    setResults(data);
+    try {
+      const response = await axios.get(`https://api.themoviedb.org/3/search/multi`, {
+        params: {
+          api_key: process.env.NEXT_PUBLIC_TMDB_API_KEY,
+          query: query,
+        },
+      });
+      const data = response.data.results.map((item: any) => ({
+        title: item.title || item.name,
+      }));
+      setResults(data);
+    } catch (error) {
+      console.error("Error fetching search results:", error);
+    }
   };
 
   return (
