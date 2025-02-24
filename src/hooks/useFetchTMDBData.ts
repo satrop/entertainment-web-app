@@ -28,7 +28,7 @@ const useFetchTMDBData = (endpoint: string, sliceCount: number) => {
   useEffect(() => {
     const fetchConfiguration = async () => {
       try {
-        const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
+        const apiKey = process.env.TMDB_API_KEY;
         const response = await fetch(`https://api.themoviedb.org/3/configuration?api_key=${apiKey}`);
         if (!response.ok) throw new Error("Failed to fetch configuration");
         const configData: TMDBConfig = await response.json();
@@ -44,7 +44,7 @@ const useFetchTMDBData = (endpoint: string, sliceCount: number) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
+        const apiKey = process.env.TMDB_API_KEY;
         const response = await fetch(`https://api.themoviedb.org/3/${endpoint}?api_key=${apiKey}`);
         if (!response.ok) throw new Error(`Failed to fetch ${endpoint}`);
         const resultData: TMDBResult = await response.json();

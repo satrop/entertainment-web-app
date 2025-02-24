@@ -14,7 +14,7 @@ interface ContentRating {
 
 export const getCertification = async (item: { id: number }, type: "movie" | "tv"): Promise<string> => {
   try {
-    const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
+    const apiKey = process.env.TMDB_API_KEY;
     const endpoint = type === "movie" ? `movie/${item.id}/release_dates` : `tv/${item.id}/content_ratings`;
     const response = await fetch(`https://api.themoviedb.org/3/${endpoint}?api_key=${apiKey}`);
     if (!response.ok) throw new Error(`Failed to fetch ${type} certification`);

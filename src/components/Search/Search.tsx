@@ -12,7 +12,7 @@ const Search: React.FC = () => {
     try {
       const response = await axios.get(`https://api.themoviedb.org/3/search/multi`, {
         params: {
-          api_key: process.env.NEXT_PUBLIC_TMDB_API_KEY,
+          api_key: process.env.TMDB_API_KEY,
           query: query,
         },
       });
